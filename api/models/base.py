@@ -17,6 +17,3 @@ class BaseModel(db.Model):
     __abstract__ = True
 
     id = Column(String(36), primary_key=True, default=get_uuid, unique=True)
-    creation_date = Column(
-        DateTime(timezone=True), default=datetime.utcnow, nullable=False
-    )

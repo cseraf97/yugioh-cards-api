@@ -3,8 +3,8 @@ from enum import Enum
 
 class CardType(Enum):
 
-    MONSTER = "Monster"
-    SPELL = "Spell"
-    TRAP = "Trap"
-    FUSION = "Fusion"
-    SYNCHRO = "Synchro"
+    MONSTER = 1
+    SPELL = 2
+    TRAP = 3
+    FUSION = 3
+    SYNCHRO = 4
