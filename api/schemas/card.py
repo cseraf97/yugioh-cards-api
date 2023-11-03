@@ -2,7 +2,8 @@ from marshmallow import (
     Schema,
     fields,
     pre_dump,
-    pre_load
+    pre_load,
+    post_dump
 )
 
 from marshmallow_enum import EnumField
@@ -18,11 +19,23 @@ class CardGetOneResponseSchema(Schema):
     name = fields.Str()
     type = fields.Str()
     description = fields.Str()
+    attack_strength = fields.Integer()
+    defense_strength = fields.Integer()
     image_filename = fields.Str()
 
     @pre_dump
     def type_format(self, data, **args):
         data.type = CardType(data.type).name
+        if data.type != CardType.MONSTER.name:
+            del data.attack_strength
+            del data.defense_strength
+        return data
+
+    @post_dump
+    def strength_format(self, data, **args):
+        if CardType[data['type']].name != CardType.MONSTER.name:
+            data.pop('attack_strength')
+            data.pop('defense_strength')
         return data
 
 class CardGetAllResponseSchema(Schema):

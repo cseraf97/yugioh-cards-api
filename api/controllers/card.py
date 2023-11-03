@@ -10,9 +10,6 @@ from api.schemas.card import (
     CardUpdateRequestSchema
 )
 from api.services.card import CardService
-from api.models.enums import (
-    CardType
-)
 
 
 class SingleCardController(Resource):
@@ -31,7 +28,6 @@ class SingleCardController(Resource):
 
         payload = request.get_json()
         CardCreateRequestSchema().load(payload)
-        payload['type'] = getattr(CardType, payload['type']).value
         card = CardService.create(payload)
         return CardGetOneResponseSchema().dump(card), 201
 
@@ -50,8 +46,6 @@ class SingleCardIDController(Resource):
 
         payload = request.get_json()
         CardUpdateRequestSchema().load(payload)
-        if payload.get('type'):
-            payload['type'] = getattr(CardType, payload['type']).value
         card = CardService.update(card_id, payload)
         return CardGetOneResponseSchema().dump(card), 200
 

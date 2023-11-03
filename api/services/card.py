@@ -1,6 +1,9 @@
 from api.db import db
 from api.models.card import CardModel
 from api.exceptions import NotFoundError
+from api.models.enums import (
+    CardType
+)
 
 
 class CardService:
@@ -12,6 +15,11 @@ class CardService:
     def create(cls, card_payload):
         """Creates card."""
 
+        card_type = getattr(CardType, card_payload['type'])
+        card_payload['type'] = card_type.value
+        if card_type.name != CardType.MONSTER.name:
+            card_payload["attack_strength"] = None
+            card_payload["defense_strength"] = None
         model = cls._model(**card_payload)
         db.session.add(model)
         db.session.commit()
@@ -20,7 +28,12 @@ class CardService:
     @classmethod
     def update(cls, card_id, card_payload):
         """Updates a card."""
-
+        if card_payload.get('type'):
+            card_type = getattr(CardType, card_payload['type'])
+            card_payload['type'] = card_type.value
+            if card_type.name != CardType.MONSTER.name:
+                card_payload["attack_strength"] = None
+                card_payload["defense_strength"] = None
         db.session.query(cls._model).filter_by(id=card_id).update(card_payload)
         db.session.commit()
         card = cls.get_one(card_id)
