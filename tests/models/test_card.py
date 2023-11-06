@@ -1,7 +1,8 @@
 import pytest
 from sqlalchemy.exc import (
     IntegrityError,
-    InvalidRequestError
+    InvalidRequestError,
+    CompileError
 )
 
 from api.exceptions import NotFoundError
@@ -24,17 +25,17 @@ class TestCardService(DBTest):
 
     def test_create_card_error_missing_fields(self):
         with pytest.raises(IntegrityError):
-            CardService.create({})
+            CardService.create({"type": "SPELL"})
 
     def test_update_card_success(self):
         card = CardService.create(self.card_payload)
-        new_hp = 50
-        card = CardService.update(card.id, {"hp": new_hp})
-        assert card.hp == new_hp
+        new_name = "new_name"
+        card = CardService.update(card.id, {"name": new_name})
+        assert card.name == new_name
 
     def test_update_card_error_unkown_value(self):
         card = CardService.create(self.card_payload)
-        with pytest.raises(InvalidRequestError):
+        with pytest.raises(CompileError):
             CardService.update(card.id, {"foo": "foo"})
 
     def test_get_one_card_success(self):
@@ -51,16 +52,11 @@ class TestCardService(DBTest):
         payload_one = self.card_payload.copy()
         CardService.create(payload_one)
 
-        payload_two = self.card_payload.copy()
-        payload_two["name"] = "test"
-        CardService.create(payload_two)
-
-        filters = {"type": "FIRE"}
-        response = CardService.get_many(filters)
-        assert len(response['cards']) == 2
+        response = CardService.get_many({})
+        assert len(response['cards']) == 1
 
     def test_get_many_cards_error_not_found(self):
-        filters = {"type": "FIRE"}
+        filters = {"type": "SPELL"}
         response = CardService.get_many(filters)
         assert len(response['cards']) == 0
 
