@@ -45,7 +45,7 @@ class CardService:
 
         card = cls._model.query.get(card_id)
         if not card:
-            raise NotFoundError(f"{card_id} not found")
+            raise NotFoundError(f"The card {card_id} was not found")
         return card
 
     @classmethod

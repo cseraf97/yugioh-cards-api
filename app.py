@@ -5,6 +5,11 @@ from api.controllers.card import (
     SingleCardController,
     SingleCardIDController
 )
+from api.controllers.deck import (
+    SingleDeckController,
+    SingleDeckIDController,
+    DeckCardController
+)
 from api.utils.api import BaseAPI
 from api.utils.db import init_db
 
@@ -25,6 +30,9 @@ def create_app(config):
     api = BaseAPI(app)
     api.add_resource(SingleCardController, '/cards')
     api.add_resource(SingleCardIDController, '/cards/<card_id>')
+    api.add_resource(SingleDeckController, '/decks')
+    api.add_resource(SingleDeckIDController, '/decks/<deck_id>')
+    api.add_resource(DeckCardController, '/decks/cards')
 
     return app
 
