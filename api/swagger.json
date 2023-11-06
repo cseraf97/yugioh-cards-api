@@ -1,0 +1,509 @@
+{
+    "definitions": {
+        "DeckCreateRequest": {
+            "properties": {
+                "name": {
+                    "example": "Spellcaster's Grimoire",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DeckCardCreateRequest": {
+            "properties": {
+                "card_id": {
+                    "example": "178b99cc-cabc-48bb-9b20-597607db63a3",
+                    "type": "string"
+                },
+                "deck_id": {
+                    "example": "9bf21edf-d138-49b8-8164-74a7faefcc19",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CreateRequest": {
+            "properties": {
+                "name": {
+                    "example": "Return of the Dragon Lords",
+                    "type": "string"
+                },
+                "type": {
+                    "example": "SPELL",
+                    "type": "integer"
+                },
+                "description": {
+                    "example": null,
+                    "type": "string"
+                },
+                "attack_strength": {
+                    "example": 0,
+                    "type": "integer"
+                },
+                "defense_strength": {
+                    "example": 0,
+                    "type": "integer"
+                },
+                "image_filename": {
+                    "example": "return_dragon_lords.jpg",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DeckCardCreateResponse": {
+            "properties": {
+                "message": {
+                    "type": "string"
+                }
+            },
+            "type": "asdasd"
+        },
+        "DeckCardDeleteResponse": {
+            "properties": {
+                "message": {
+                    "type": "string"
+                }
+            },
+            "type": "string"
+        },
+        "DeckCreateResponse": {
+            "properties": {
+                "id": {
+                    "example": "178b99cc-cabc-48bb-9b20-597607db63a3",
+                    "type": "string"
+                },
+                "name": {
+                    "example": "Spellcaster's Grimoire",
+                    "type": "string"
+                },
+                "cards": {
+                    "example": [],
+                    "type": "list"
+                }
+            },
+            "type": "object"
+        },
+        "CreateResponse": {
+            "properties": {
+                "description": {
+                    "example": null,
+                    "type": "string"
+                },
+                "id": {
+                    "example": "178b99cc-cabc-48bb-9b20-597607db63a3",
+                    "type": "string"
+                },
+                "image_filename": {
+                    "example": "return_dragon_lords.jpg",
+                    "type": "string"
+                },
+                "name": {
+                    "example": "Return of the Dragon Lords",
+                    "type": "string"
+                },
+                "type": {
+                    "example": "SPELL",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GetOneResponse": {
+            "properties": {
+                "id": {
+                    "example": "178b99cc-cabc-48bb-9b20-597607db63a3",
+                    "type": "string"
+                },
+                "image_filename": {
+                    "example": "return_dragon_lords.jpg",
+                    "type": "string"
+                },
+                "name": {
+                    "example": "Return of the Dragon Lords",
+                    "type": "string"
+                },
+                "type": {
+                    "example": "SPELL",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GetAllResponse": {
+            "properties": {
+                "cards": {
+                    "type": "array",
+                    "items": {
+                        "properties": {
+                            "schema": {
+                                "$ref": "#/definitions/GetOneResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "NotFoundResponse": {
+            "properties": {
+                "error": {
+                    "example": "The card 178b99cc-cabc-48bb-9b20-597607db63a3 was not found",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DeckNotFoundResponse": {
+            "properties": {
+                "error": {
+                    "example": "The deck 178b99cc-cabc-48bb-9b20-597607db63a3 was not found",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DeckUpdateRequest": {
+            "properties": {
+                "name": {
+                    "example": "Spellcaster's Grimoire",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UpdateRequest": {
+            "properties": {
+                "image_filename": {
+                    "example": "return_dragon_lords.jpg",
+                    "type": "string"
+                },
+                "name": {
+                    "example": "Return of the Dragon Lords",
+                    "type": "string"
+                },
+                "type": {
+                    "example": "SPELL",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DeckUpdateResponse": {
+            "properties": {
+                "id": {
+                    "example": "cbec9c75-680f-4d4d-9a87-b8f4343c186e",
+                    "type": "string"
+                },
+                "name": {
+                    "example": "Spellcaster's Grimoire",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UpdateResponse": {
+            "properties": {
+                "id": {
+                    "example": "96e79a65-7bdd-42b3-87bd-b37d5479e867",
+                    "type": "string"
+                },
+                "image_filename": {
+                    "example": "return_dragon_lords.jpg",
+                    "type": "string"
+                },
+                "name": {
+                    "example": "Return of the Dragon Lords",
+                    "type": "string"
+                },
+                "type": {
+                    "example": "SPELL",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "info": {
+        "description": "API for Yu-Gi-Oh! Cards",
+        "title": "Yu-Gi-Oh! Cards API",
+        "version": "1.0.0"
+    },
+    "openapi": "2.0.0",
+    "paths": {
+        "/cards": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "List of cards",
+                        "schema": {
+                            "$ref": "#/definitions/GetAllResponse"
+                        }
+                    }
+                },
+                "summary": "Retrieve all cards by filters"
+            },
+            "post": {
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "payload",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CreateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success card created",
+                        "schema": {
+                            "$ref": "#/definitions/CreateResponse"
+                        }
+                    }
+                },
+                "summary": "Create a card"
+            }
+        },
+        "/cards/{card_id}": {
+            "delete": {
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "card_id"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Card deleted"
+                    },
+                    "404": {
+                        "description": "Card not found",
+                        "schema": {
+                            "$ref": "#/definitions/NotFoundResponse"
+                        }
+                    }
+                },
+                "summary": "Delete a card by id"
+            },
+            "get": {
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "card_id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/GetOneResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "schema": {
+                            "$ref": "#/definitions/NotFoundResponse"
+                        }
+                    }
+                },
+                "summary": "Retrieve a card by id"
+            },
+            "put": {
+                "parameters": [
+                    {
+                        "in": "put",
+                        "name": "card_id"
+                    },
+                    {
+                        "in": "body",
+                        "name": "payload",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UpdateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Card updated",
+                        "schema": {
+                            "$ref": "#/definitions/UpdateResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Card not found",
+                        "schema": {
+                            "$ref": "#/definitions/NotFoundResponse"
+                        }
+                    }
+                },
+                "summary": "Update a card by id"
+            }
+        }, "/decks": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "List of decks",
+                        "schema": {
+                            "$ref": "#/definitions/GetAllResponse"
+                        }
+                    }
+                },
+                "summary": "Retrieve all decks by filters"
+            },
+            "post": {
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "payload",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/DeckCreateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success deck created",
+                        "schema": {
+                            "$ref": "#/definitions/DeckCreateResponse"
+                        }
+                    }
+                },
+                "summary": "Create a deck"
+            }
+        },
+        "/decks/{deck_id}": {
+            "delete": {
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "deck_id"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deck deleted"
+                    },
+                    "404": {
+                        "description": "Deck not found",
+                        "schema": {
+                            "$ref": "#/definitions/DeckNotFoundResponse"
+                        }
+                    }
+                },
+                "summary": "Delete a deck by id"
+            },
+            "get": {
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "deck_id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/GetOneResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "schema": {
+                            "$ref": "#/definitions/DeckNotFoundResponse"
+                        }
+                    }
+                },
+                "summary": "Retrieve a deck by id"
+            },
+            "put": {
+                "parameters": [
+                    {
+                        "in": "put",
+                        "name": "deck_id"
+                    },
+                    {
+                        "in": "body",
+                        "name": "payload",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/DeckUpdateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Deck updated",
+                        "schema": {
+                            "$ref": "#/definitions/DeckUpdateResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Deck not found",
+                        "schema": {
+                            "$ref": "#/definitions/DeckNotFoundResponse"
+                        }
+                    }
+                },
+                "summary": "Update a deck by id"
+            }
+        }, "/decks/cards": {
+            "post": {
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "payload",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/DeckCardCreateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success association between a card and a deck",
+                        "schema": {
+                            "$ref": "#/definitions/DeckCardCreateResponse"
+                        }
+                    }
+                },
+                "summary": "Associate a card with a deck"
+            },
+            "delete": {
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "payload",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/DeckCardCreateRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "testing",
+                        "schema": {
+                            "$ref": "#/definitions/DeckCardDeleteResponse"
+                        }
+                    }
+                },
+                "summary": "Disassociate a card with its deck"
+            }
+        }
+    },
+    "security": [
+        {
+            "ApiKey": []
+        }
+    ],
+    "securityDefinitions": {
+        "ApiKey": {
+            "in": "header",
+            "name": "Api-Key",
+            "type": "apiKey"
+        }
+    },
+    "swagger": "2.0"
+}

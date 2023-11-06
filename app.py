@@ -10,7 +10,7 @@ from api.controllers.deck import (
     SingleDeckIDController,
     DeckCardController
 )
-from api.utils.api import BaseAPI
+from api.utils.api import BaseAPI, swagger_config
 from api.utils.db import init_db
 
 
@@ -20,6 +20,7 @@ def create_app(config):
 
     app = Flask(__name__)
     app.config.from_object(config)
+    swagger_config(app)
 
     init_db(app)
 
